@@ -31,15 +31,11 @@ end
 
 require 'open-uri'
 JavaBuildpack::Util::Cache::DownloadCache.new.get('http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip') do |file|
-#d=JavaBuildpack::Util::DownloadCache.new().get(Pathname.new("."))
-#d.initialize(build_dir).get('http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip') do |file|
-  print 'oi'
-#YAML.load_file(file)
+  value = `unzip MCR_R2015b_glnxa64_installer.zip`
+  value = `./install -mode silent -agreeToLicense yes`
 end
 
 #open('MCRInstaller.zip', 'wb') do |file|
 #  file << open('http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip').read
 #end
  
-value = `unzip MCR_R2015b_glnxa64_installer.zip`
-value = `./install -mode silent -agreeToLicense yes`
