@@ -29,7 +29,8 @@ end
 
 require 'open-uri'
 JavaBuildpack::Util::DownloadCache.new().get('http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip') do |file|
-  YAML.load_file(file)
+  print 'oi'
+#YAML.load_file(file)
 end
 
 #open('MCRInstaller.zip', 'wb') do |file|
