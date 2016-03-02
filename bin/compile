@@ -34,10 +34,13 @@ end
 
 
 JavaBuildpack::Util::Cache::DownloadCache.new(Pathname.new(".")).get('http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip') do |file|
-  file.close
-  value = `unzip MCR_R2015b_glnxa64_installer.zip`
-  value = `./install -mode silent -agreeToLicense yes`
-#end
+   Dir.chdir(".") do
+   f.write
+  end
+end
+value = `unzip MCR_R2015b_glnxa64_installer.zip`
+value = `./install -mode silent -agreeToLicense yes`
+
 
 #open('MCRInstaller.zip', 'wb') do |file|
 #  file << open('http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip').read
