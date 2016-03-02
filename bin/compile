@@ -33,9 +33,12 @@ end
 
 JavaBuildpack::Util::Cache::DownloadCache.new(Pathname.new(".")).get('http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip') do |file|
    Dir.chdir(".") do
-   file.write
+   file.close
   end
 end
+value = 'ls'
+puts value
+puts 'ellie'
 value = `unzip MCR_R2015b_glnxa64_installer.zip`
 value = `./install -mode silent -agreeToLicense yes`
 
