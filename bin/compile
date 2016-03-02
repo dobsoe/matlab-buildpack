@@ -23,8 +23,6 @@ require 'java_buildpack/buildpack'
 require 'java_buildpack/util/cache'
 require 'java_buildpack/util/cache/download_cache'
 require 'open-uri'
-require 'rubygems'
-require 'zip'
 
 build_dir = ARGV[0]
 
