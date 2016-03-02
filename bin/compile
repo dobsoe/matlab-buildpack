@@ -21,6 +21,7 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'java_buildpack/buildpack'
 require 'java_buildpack/util/cache'
+require 'java_buildpack/util/cache/download_cache'
 
 build_dir = ARGV[0]
 
@@ -29,7 +30,7 @@ JavaBuildpack::Buildpack.with_buildpack(build_dir, 'Compile failed with exceptio
 end
 
 require 'open-uri'
-JavaBuildpack::Util::DownloadCache.get('http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip') do |file|
+JavaBuildpack::Util::Cache::DownloadCache.new.get('http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip') do |file|
 #d=JavaBuildpack::Util::DownloadCache.new().get(Pathname.new("."))
 #d.initialize(build_dir).get('http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip') do |file|
   print 'oi'
