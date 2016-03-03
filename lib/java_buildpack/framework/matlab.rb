@@ -32,6 +32,7 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         download_zip
+        jreisogjepi
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
