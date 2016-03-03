@@ -138,10 +138,10 @@ module JavaBuildpack
       tags     = []
 
       components.each do |component|
-        puts components
-        puts 'ellie'
         
         result = component.detect
+        puts component
+        puts result
 
         next unless result
 
