@@ -47,6 +47,7 @@ module JavaBuildpack
       tags << "java-buildpack=#{@buildpack_version.to_s false}" unless tags.empty?
       tags = tags.flatten.compact.sort
 
+      @logger.fatal { "hey ellie" }
       @logger.debug { "Detection Tags: #{tags}" }
       tags
     end
