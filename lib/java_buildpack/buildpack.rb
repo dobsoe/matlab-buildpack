@@ -140,9 +140,6 @@ module JavaBuildpack
       components.each do |component|
         
         result = component.detect
-        puts component
-        puts result
-
         next unless result
 
         detected << component
