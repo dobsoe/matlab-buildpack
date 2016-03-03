@@ -47,7 +47,6 @@ module JavaBuildpack
       tags << "java-buildpack=#{@buildpack_version.to_s false}" unless tags.empty?
       tags = tags.flatten.compact.sort
 
-      puts("hey ellie")
       @logger.debug { "Detection Tags: #{tags}" }
       tags
     end
@@ -57,6 +56,7 @@ module JavaBuildpack
     # @return [Void]
     def compile
       puts BUILDPACK_MESSAGE % @buildpack_version
+      puts "ELLIE"
 
       container = component_detection('container', @containers, true).first
       no_container unless container
