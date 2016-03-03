@@ -89,8 +89,6 @@ module JavaBuildpack
         download_start_time = Time.now
 
         print "-----> Downloading #{name} #{version} from #{uri.sanitize_uri} "
-        print "-----> oi"
-
         JavaBuildpack::Util::Cache::ApplicationCache.new.get(uri) do |file, downloaded|
           puts downloaded ? "(#{(Time.now - download_start_time).duration})" : '(found in cache)'
           yield file
@@ -138,7 +136,6 @@ module JavaBuildpack
       # @return [Void]
       def download_zip(version, uri, strip_top_level = true, target_directory = @droplet.sandbox,
                        name = @component_name)
-        print "-----> oi oi oi "
         download(version, uri, name) do |file|
           with_timing "Expanding #{name} to #{target_directory.relative_path_from(@droplet.root)}" do
             if strip_top_level

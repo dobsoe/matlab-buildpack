@@ -26,6 +26,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
+        print "-----> ellie"
         download_jar
         @droplet.additional_libraries << (@droplet.sandbox + jar_name)
       end
