@@ -31,7 +31,6 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-        print "-----> oi oi oi "
         download_zip 
       end
 
