@@ -56,7 +56,7 @@ module JavaBuildpack
     # @return [Void]
     def compile
       puts BUILDPACK_MESSAGE % @buildpack_version
-      puts "ELLIE"
+      puts @frameworks
 
       container = component_detection('container', @containers, true).first
       no_container unless container
