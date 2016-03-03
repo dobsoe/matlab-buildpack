@@ -35,7 +35,6 @@ jres:
 # command after any Java Opts added by previous frameworks.
 
 frameworks:
-  - "JavaBuildpack::Framework::Matlab"
   - "JavaBuildpack::Framework::AppDynamicsAgent"
   - "JavaBuildpack::Framework::ContainerCertificateTrustStore"
   - "JavaBuildpack::Framework::Debug"
@@ -44,7 +43,8 @@ frameworks:
   - "JavaBuildpack::Framework::Jmx"
   - "JavaBuildpack::Framework::JrebelAgent"
 # - "JavaBuildpack::Framework::LunaSecurityProvider"
-#  - "JavaBuildpack::Framework::MariaDbJDBC"
+  - "JavaBuildpack::Framework::Matlab"
+  - "JavaBuildpack::Framework::MariaDbJDBC"
   - "JavaBuildpack::Framework::NewRelicAgent"
   - "JavaBuildpack::Framework::PlayFrameworkAutoReconfiguration"
   - "JavaBuildpack::Framework::PlayFrameworkJPAPlugin"
