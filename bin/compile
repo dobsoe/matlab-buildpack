@@ -31,14 +31,15 @@ JavaBuildpack::Buildpack.with_buildpack(build_dir, 'Compile failed with exceptio
 end
 
 
-JavaBuildpack::Util::Cache::DownloadCache.new(Pathname.new("/tmp/ellie/")).get('http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip')
+d=JavaBuildpack::Util::Cache::DownloadCache.new(Pathname.new("/tmp/ellie/")).get('http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip')
+puts(d.inspect)
 # do |file|
-Dir.chdir("/tmp/ellie") 
+#Dir.chdir("/tmp/ellie") 
 #   file.close
 #  end
 #end
-value = `unzip MCR_R2015b_glnxa64_installer.zip`
-value = `./install -mode silent -agreeToLicense yes`
+#value = `unzip MCR_R2015b_glnxa64_installer.zip`
+#value = `./install -mode silent -agreeToLicense yes`
 
 
 #open('MCRInstaller.zip', 'wb') do |file|
