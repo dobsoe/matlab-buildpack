@@ -31,8 +31,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-        download_zip
-        jreisogjepi
+        download_zip 
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
@@ -48,27 +47,15 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::VersionedDependencyComponent#supports?)
       def supports?
-        jrebel_configured?(@application.root) || jrebel_configured?(@application.root + 'WEB-INF/classes') ||
-        jars_with_jrebel_configured?(@application.root)
+        #jrebel_configured?(@application.root) || jrebel_configured?(@application.root + 'WEB-INF/classes') ||
+        #jars_with_jrebel_configured?(@application.root)
       end
 
       private
 
-      def jrebel_configured?(root_path)
-        (root_path + 'rebel-remote.xml').exist?
-      end
-
-      def jars_with_jrebel_configured?(root_path)
-        (root_path + '**/*.jar').glob.any? { |jar| ! `unzip -l "#{jar}" | grep "rebel-remote\\.xml$"`.strip.empty? }
-      end
-
       def lib_name
         #architecture == 'x86_64' || architecture == 'i686' ? 'libjrebel64.so' : 'libjrebel32.so'
         'MCR_R2015b_glnxa64_installer.zip'
-      end
-
-      def architecture
-        `uname -m`.strip
       end
 
     end
