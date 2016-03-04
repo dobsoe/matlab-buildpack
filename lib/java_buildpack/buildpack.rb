@@ -144,9 +144,6 @@ module JavaBuildpack
         detected << component
         tags << result
       end
-
-      puts detected
-
       fail "Application can be run by more than one #{type}: #{names detected}" if unique && detected.size > 1
       [detected, tags]
     end
