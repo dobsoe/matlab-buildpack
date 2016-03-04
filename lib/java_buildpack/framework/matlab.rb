@@ -40,7 +40,7 @@ module JavaBuildpack
         puts 'downloading matlab'
         download_zip("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip")
         target_directory = @droplet.sandbox
-        shell "cd #{target_directory}"
+        shell "cd .java-buildpack/matlab"
         shell "./install"
       end
       
