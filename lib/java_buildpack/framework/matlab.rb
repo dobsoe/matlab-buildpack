@@ -37,6 +37,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
+        puts 'ellie'
         download_zip 
       end
       
