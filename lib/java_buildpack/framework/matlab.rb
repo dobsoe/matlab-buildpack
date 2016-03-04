@@ -44,7 +44,7 @@ module JavaBuildpack
             shell "cd /tmp/matlab"
             puts 'installing matlab'
             shell "./install"
-            end
+            #end
           end
         end
       end
