@@ -38,10 +38,19 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         puts 'downloading matlab'
-        download_zip("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip")
-        target_directory = @droplet.sandbox
-        shell "cd .java-buildpack/matlab"
-        shell "./install"
+        download("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip", @component_name) do |file|
+          with_timing "Expanding #{name} to #{target_directory.relative_path_from(@droplet.root)}" do
+            Dir.mktmpdir do |root|
+            shell "unzip -qq #{file.path} -d #{root} 2>&1"
+            shell "cd #{root}"
+            shell "cd matlab"
+            puts 'installing matlab'
+            shell "./install"
+            #FileUtils.mkdir_p target_directory.parent
+            #FileUtils.mv Pathname.new(root).children.first, target_directory
+            end
+          end
+        end
       end
       
       # (see JavaBuildpack::Component::BaseComponent#release)
