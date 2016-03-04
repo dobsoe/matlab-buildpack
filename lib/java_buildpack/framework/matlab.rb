@@ -32,6 +32,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#detect)
       def detect
+        return 'matlab'
       end
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
