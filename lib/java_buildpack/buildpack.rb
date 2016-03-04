@@ -146,8 +146,7 @@ module JavaBuildpack
         tags << result
       end
 
-      tags << "matlab"
-
+      puts detected
       fail "Application can be run by more than one #{type}: #{names detected}" if unique && detected.size > 1
       [detected, tags]
     end
