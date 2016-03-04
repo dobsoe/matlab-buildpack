@@ -37,8 +37,8 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-        puts 'ellie'
-        download_zip 
+        puts 'downloading matlab'
+        download_zip("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip")
       end
       
       # (see JavaBuildpack::Component::BaseComponent#release)
