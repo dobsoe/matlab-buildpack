@@ -32,6 +32,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#detect)
       def detect
+        puts 'lalalala'
       end
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
