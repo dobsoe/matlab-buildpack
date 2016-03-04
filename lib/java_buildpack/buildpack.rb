@@ -140,6 +140,8 @@ module JavaBuildpack
       components.each do |component|
         
         result = component.detect
+        puts component
+        puts result
         next unless result
 
         detected << component
@@ -147,6 +149,7 @@ module JavaBuildpack
       end
 
       puts detected
+
       fail "Application can be run by more than one #{type}: #{names detected}" if unique && detected.size > 1
       [detected, tags]
     end

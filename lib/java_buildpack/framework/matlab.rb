@@ -32,8 +32,6 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#detect)
       def detect
-        ellie = 'lalalala'
-        puts ellie
       end
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
