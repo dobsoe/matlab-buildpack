@@ -17,6 +17,8 @@
 require 'fileutils'
 require 'java_buildpack/component/base_component'
 require 'java_buildpack/framework'
+require 'spec_helper'
+require 'component_helper'
 
 module JavaBuildpack
   module Framework
