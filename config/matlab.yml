@@ -15,5 +15,5 @@
 
 # Configuration for the MATLAB framework
 ---
-version: 6.+
-repository_root: http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/
+matlab:
+  repository_root: ! '{default.repository.root}/matlab'
