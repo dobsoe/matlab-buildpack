@@ -49,7 +49,6 @@ module JavaBuildpack
             file=File.open("log.out")
             contents = file.read
             puts contents
-            end
           end
         end
       end
