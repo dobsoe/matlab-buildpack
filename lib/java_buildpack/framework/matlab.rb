@@ -36,18 +36,19 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-        puts 'downloading matlab'
         download("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip", @component_name) do |file|
           with_timing "Expanding matlab to some dir" do
             #Dir.mktmpdir do |root|
             FileUtils.mkdir_p("/tmp/matlab")
             shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
-            FileUtils.cd("/tmp/matlab", :verbose => true) do
-              puts 'installing matlab'
-              shell "./install  -mode silent -agreeToLicense yes &>log.out"
-              file=File.open("log.out")
-              contents = file.read
-              puts contents
+            puts "oi"
+            FileUtils.cd("/tmp/matlab", :verbose => true)
+            puts "installing matlab"
+            shell "./install  -mode silent -agreeToLicense yes &>log.out"
+            puts "oi again"
+            file=File.open("log.out")
+            contents = file.read
+            puts contents
             end
           end
         end
