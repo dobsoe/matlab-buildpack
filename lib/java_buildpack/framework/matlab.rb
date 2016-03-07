@@ -50,8 +50,9 @@ module JavaBuildpack
               contents = file.read
               puts contents
             end
-            puts @droplet.root
-            FileUtils.copy_file("/tmp/matlab/log.out", @droplet.root+"log.out", preserve=true)
+            puts @sandbox
+            @droplet.copy_resources()
+            FileUtils.copy_file("/tmp/matlab/log.out", @sandbox.root+"log.out", preserve=true)
           end
         end
       end
