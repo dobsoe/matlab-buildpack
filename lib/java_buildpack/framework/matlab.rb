@@ -42,15 +42,12 @@ module JavaBuildpack
             #Dir.mktmpdir do |root|
             FileUtils.mkdir_p("/tmp/matlab")
             shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
-            dir=FileUtils.pwd()
-            puts "dir is "
-            puts dir
             FileUtils.cd("/tmp/matlab", :verbose => true) do
-              dir=FileUtils.pwd()
-              puts "dir is "
-              puts dir
               puts 'installing matlab'
-              shell "./install"
+              shell "./install  -mode silent -agreeToLicense yes &>log.out"
+              file=File.open("log.out")
+              contents = file.read
+              puts contents
             end
           end
         end
