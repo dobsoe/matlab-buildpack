@@ -49,7 +49,7 @@ module JavaBuildpack
               puts file
               contents = file.read
               puts contents
-              FileUtils.copy_file("/tmp/matlab/log.out", "~/log.out", preserve=True)
+              FileUtils.copy_file("/tmp/matlab/log.out", "~/log.out", preserve=true)
             end
           end
         end
