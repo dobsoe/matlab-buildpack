@@ -44,7 +44,7 @@ module JavaBuildpack
         FileUtils.cd(@droplet.sandbox) do
           ret=shell "./install  -mode silent -agreeToLicense yes &>#{@droplet.sandbox}+log.out"
         end
-        @droplet.copy_resources(@droplet.sandbox)
+        #@droplet.copy_resources(@droplet.sandbox)
         #FileUtils.copy_file("/tmp/matlab/log.out", "/usr/local/logfiles/log.out", preserve=true)
       end
       # (see JavaBuildpack::Component::BaseComponent#release)
