@@ -40,7 +40,7 @@ module JavaBuildpack
           FileUtils.mkdir_p("/tmp/matlab")
           shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
         end
-        FileUtils.cd("/tmp/matlab/MCR_R2015b_maci64_installer", :verbose => true) do
+        FileUtils.cd("/tmp/matlab/MCR_R2015b_glnxa64_installer", :verbose => true) do
           ret=shell "./install  -mode silent -agreeToLicense yes &>/tmp/matlab/log.out"
         end
 
