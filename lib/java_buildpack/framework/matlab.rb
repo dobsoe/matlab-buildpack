@@ -37,19 +37,16 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         download("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip", @component_name) do |file|
-          FileUtils.mkdir_p("/tmp/matlab")
           #shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
-          shell "unzip -qq #{file.path} -d /tmp/matlab"
+          shell "unzip -qq #{file.path} -d #{@droplet.sandbox}"
         end
-        FileUtils.cd("/tmp/matlab", :verbose => true) do
-          ret=shell "./install  -mode silent -agreeToLicense yes &>/tmp/matlab/log.out"
+        expect(@droplet.sandbox + 'MCR_R2015b_glnxa64_installer').to exist
+        FileUtils.cd(@droplet.sandbox) do
+          ret=shell "./install  -mode silent -agreeToLicense yes &>#{@droplet.sandbox}+log.out"
         end
-
-        puts @droplet.sandbox
         @droplet.copy_resources(@droplet.sandbox)
         #FileUtils.copy_file("/tmp/matlab/log.out", "/usr/local/logfiles/log.out", preserve=true)
       end
-
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
       end
