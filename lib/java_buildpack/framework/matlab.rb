@@ -38,9 +38,10 @@ module JavaBuildpack
       def compile
         download("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip", @component_name) do |file|
           FileUtils.mkdir_p("/tmp/matlab")
-          shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
+          #shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
+          shell "unzip -qq #{file.path} -d /tmp/matlab"
         end
-        FileUtils.cd("/tmp/matlab/MCR_R2015b_glnxa64_installer", :verbose => true) do
+        FileUtils.cd("/tmp/matlab", :verbose => true) do
           ret=shell "./install  -mode silent -agreeToLicense yes &>/tmp/matlab/log.out"
         end
 
