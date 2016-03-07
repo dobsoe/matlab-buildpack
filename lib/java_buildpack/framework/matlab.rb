@@ -43,10 +43,9 @@ module JavaBuildpack
             shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
             FileUtils.cd("/tmp/matlab", :verbose => true) do
               ret=shell "./install  -mode silent -agreeToLicense yes &>/tmp/matlab/log.out"
-              file=File.open("log.out")
             end
             #puts @sandbox
-            @droplet.copy_resources("/tmp/matlab/log.out", @sandbox, preserve=true)
+            @droplet.copy_resources("/tmp/matlab/log.out")
             #FileUtils.copy_file("/tmp/matlab/log.out", @sandbox, preserve=true)
           end
         end
