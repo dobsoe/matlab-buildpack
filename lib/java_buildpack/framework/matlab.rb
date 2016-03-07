@@ -17,8 +17,6 @@
 require 'fileutils'
 require 'java_buildpack/component/base_component'
 require 'java_buildpack/framework'
-require 'spec_helper'
-require 'component_helper'
 
 module JavaBuildpack
   module Framework
@@ -42,7 +40,7 @@ module JavaBuildpack
           #shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
           shell "unzip -qq #{file.path} -d #{@droplet.sandbox}"
         end
-        expect(@droplet.sandbox + 'MCR_R2015b_glnxa64_installer').to exist
+        #expect(@droplet.sandbox + 'MCR_R2015b_glnxa64_installer').to exist
         FileUtils.cd(@droplet.sandbox) do
           ret=shell "./install  -mode silent -agreeToLicense yes &>#{@droplet.sandbox}+log.out"
         end
