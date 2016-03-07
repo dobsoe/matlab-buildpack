@@ -37,20 +37,16 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         download("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip", @component_name) do |file|
-          with_timing "Expanding matlab to some dir" do
-            #Dir.mktmpdir do |root|
-            FileUtils.mkdir_p("/tmp/matlab")
-            shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
-            FileUtils.cd("/tmp/matlab", :verbose => true) do
-              ret=shell "./install  -mode silent -agreeToLicense yes &>/tmp/matlab/log.out"
-            end
-            puts @droplet.sandbox
-            @droplet.copy_resources(@droplet.sandbox)
-            FileUtils.chmod 777, "/usr/local"
-            FileUtils.mkdir_p("/usr/local/logfiles")
-            FileUtils.copy_file("/tmp/matlab/log.out", "/usr/local/logfiles/log.out", preserve=true)
-          end
+          FileUtils.mkdir_p("/tmp/matlab")
+          shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
         end
+        FileUtils.cd("/tmp/matlab/MCR_R2015b_maci64_installer", :verbose => true) do
+          ret=shell "./install  -mode silent -agreeToLicense yes &>/tmp/matlab/log.out"
+        end
+
+        puts @droplet.sandbox
+        @droplet.copy_resources(@droplet.sandbox)
+        #FileUtils.copy_file("/tmp/matlab/log.out", "/usr/local/logfiles/log.out", preserve=true)
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
