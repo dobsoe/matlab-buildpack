@@ -46,6 +46,7 @@ module JavaBuildpack
             end
             puts @droplet.sandbox
             @droplet.copy_resources(@droplet.sandbox)
+            FileUtils.chmod 777, "/usr/local"
             FileUtils.mkdir_p("/usr/local/logfiles")
             FileUtils.copy_file("/tmp/matlab/log.out", "/usr/local/logfiles/log.out", preserve=true)
           end
