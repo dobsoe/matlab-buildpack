@@ -40,16 +40,18 @@ module JavaBuildpack
         download("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip", @component_name) do |file|
           with_timing "Expanding matlab to some dir" do
             #Dir.mktmpdir do |root|
-            shell "mkdir /tmp/matlab"
+            FileUtils.mkdir_p("/tmp/matlab")
             shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
-            shell "cd /tmp/matlab"
+            dircontents=FileUtils.pwd()
+            puts dircontents
+            FileUtils.cd("/tmp/matlab")
             puts 'installing matlab'
             shell "./install"
             #end
           end
         end
       end
-      
+
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
       end
