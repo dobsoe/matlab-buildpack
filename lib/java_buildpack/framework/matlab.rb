@@ -45,16 +45,10 @@ module JavaBuildpack
             dir=FileUtils.pwd()
             puts "dir is "
             puts dir
-            dirc=FileUtils.ls()
-            puts "dirc is "
-            puts dirc
             FileUtils.cd("/tmp/matlab", :verbose => true) do
               dir=FileUtils.pwd()
               puts "dir is "
               puts dir
-              dirc=FileUtils.ls()
-              puts "dirc is "
-              puts dirc
               puts 'installing matlab'
               shell "./install"
             end
