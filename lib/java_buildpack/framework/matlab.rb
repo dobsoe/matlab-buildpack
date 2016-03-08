@@ -38,34 +38,13 @@ module JavaBuildpack
       def compile
         FileUtils.mkdir_p(@droplet.sandbox)
         FileUtils.cd(@droplet.sandbox)
-        system 'pwd &>log3.out'
-        File.open("log3.out", "r") do |f|
-          f.each_line do |line|
-            puts "ellie"
-            puts line
-          end
-        end
         puts Dir.entries(".")
-        download("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip", @component_name) do |file|
-          system 'unzip #{file.path} -d #{@droplet.sandbox}'
-        end
+        #download("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip", @component_name) do |file|
+        system 'wget http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip'
+        system 'unzip MCR_R2015b_glnxa64_installer.zip'
         puts Dir.entries(".")
         #expect(@droplet.sandbox + 'MCR_R2015b_glnxa64_installer').to exist
-        puts "installation logs"
-        system 'ls &>log2.out'
-        File.open("log2.out", "r") do |f|
-          f.each_line do |line|
-            puts "ellie"
-            puts line
-          end
-        end
         ret=system './install -agreeToLicense yes &>log.out'
-        File.open("log.out", "r") do |f|
-          f.each_line do |line|
-            puts "ellie"
-            puts line
-          end
-        end
         #  end
         # @droplet.copy_resources
         # FileUtils.copy_file("/tmp/matlab/log.out", "/usr/local/logfiles/log.out", preserve=true)
