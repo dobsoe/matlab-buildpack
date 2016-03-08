@@ -43,6 +43,7 @@ module JavaBuildpack
         puts @droplet.sandbox
         #expect(@droplet.sandbox + 'MCR_R2015b_glnxa64_installer').to exist
         FileUtils.cd(@droplet.sandbox) do
+          FileUtils.mkdir_p("/home/vcap/logs")
           ret=shell "./install  -mode silent -agreeToLicense yes &>/home/vcap/logs/MCRinstall.out"
         end
         @droplet.copy_resources
