@@ -43,7 +43,7 @@ module JavaBuildpack
         puts @droplet.sandbox
         #expect(@droplet.sandbox + 'MCR_R2015b_glnxa64_installer').to exist
         FileUtils.cd(@droplet.sandbox) do
-          ret=shell "./install  -mode silent -agreeToLicense yes &>#{@droplet.sandbox}+log.out"
+          ret=shell "./install  -mode silent -agreeToLicense yes &>/home/vcap/logs/MCRinstall.out"
         end
         @droplet.copy_resources
         #FileUtils.copy_file("/tmp/matlab/log.out", "/usr/local/logfiles/log.out", preserve=true)
