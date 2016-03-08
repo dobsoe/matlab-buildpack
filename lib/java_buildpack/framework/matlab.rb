@@ -50,7 +50,6 @@ module JavaBuildpack
             puts line
           end
         end
-        fileObj.close
         #  end
           @droplet.copy_resources
         #FileUtils.copy_file("/tmp/matlab/log.out", "/usr/local/logfiles/log.out", preserve=true)
