@@ -40,17 +40,16 @@ module JavaBuildpack
           #shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
           shell "unzip -qq #{file.path} -d #{@droplet.sandbox}"
         end
-        puts @droplet.sandbox
         #expect(@droplet.sandbox + 'MCR_R2015b_glnxa64_installer').to exist
-        FileUtils.cd(@droplet.sandbox) do
-          FileUtils.mkdir_p("/home/vcap/logs")
-          ret=shell "./install  -mode silent -agreeToLicense yes &>/home/vcap/logs/MCRinstall.out  &>log.out"
-          fileObj = File.new("log.out", "r")
-          while (line = fileObj.gets)
-            puts(line)
+        #FileUtils.cd(@droplet.sandbox) do
+        ret=shell "./install  -mode silent -agreeToLicense yes &>/home/vcap/logs/MCRinstall.out  &>log.out"
+        File.open("log.out", "r") do |f|
+          f.each_line do |line|
+            puts line
           end
-          fileObj.close
-          end
+        end
+        fileObj.close
+        #  end
           @droplet.copy_resources
         #FileUtils.copy_file("/tmp/matlab/log.out", "/usr/local/logfiles/log.out", preserve=true)
       end
