@@ -37,7 +37,6 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         FileUtils.mkdir_p(@droplet.sandbox)
-        puts @droplet.sandbox
         FileUtils.cd(@droplet.sandbox)
         system 'pwd &>log3.out'
         File.open("log3.out", "r") do |f|
@@ -46,9 +45,11 @@ module JavaBuildpack
             puts line
           end
         end
+        puts Dir.entries(".")
         download("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip", @component_name) do |file|
           system 'unzip #{file.path} -d #{@droplet.sandbox}'
         end
+        puts Dir.entries(".")
         #expect(@droplet.sandbox + 'MCR_R2015b_glnxa64_installer').to exist
         puts "installation logs"
         system 'ls &>log2.out'
