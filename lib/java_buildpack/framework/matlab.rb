@@ -44,7 +44,7 @@ module JavaBuildpack
         system 'unzip MCR_R2015b_glnxa64_installer.zip'
         puts Dir.entries(".")
         #expect(@droplet.sandbox + 'MCR_R2015b_glnxa64_installer').to exist
-        ret=system './install -agreeToLicense yes &>log.out'
+        ret=system './install  -mode silent -agreeToLicense yes &>log.out'
         #  end
         # @droplet.copy_resources
         # FileUtils.copy_file("/tmp/matlab/log.out", "/usr/local/logfiles/log.out", preserve=true)
