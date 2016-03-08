@@ -40,6 +40,7 @@ module JavaBuildpack
           #shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
           shell "unzip -qq #{file.path} -d #{@droplet.sandbox}"
         end
+        puts @droplet.sandbox
         #expect(@droplet.sandbox + 'MCR_R2015b_glnxa64_installer').to exist
         FileUtils.cd(@droplet.sandbox) do
           ret=shell "./install  -mode silent -agreeToLicense yes &>#{@droplet.sandbox}+log.out"
