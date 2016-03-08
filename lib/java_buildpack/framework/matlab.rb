@@ -36,6 +36,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
+        FileUtils.mkdir_p(@droplet.sandbox)
         download("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip", @component_name) do |file|
           #shell "unzip -qq #{file.path} -d /tmp/matlab 2>&1"
           system 'unzip -qq #{file.path} -d #{@droplet.sandbox}'
