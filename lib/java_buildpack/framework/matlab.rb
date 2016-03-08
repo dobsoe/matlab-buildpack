@@ -43,7 +43,7 @@ module JavaBuildpack
         #expect(@droplet.sandbox + 'MCR_R2015b_glnxa64_installer').to exist
         #FileUtils.cd(@droplet.sandbox) do
         puts "installation logs"
-        ret=shell "./install  -mode silent -agreeToLicense yes &>/home/vcap/logs/MCRinstall.out  &>log.out"
+        ret=shell "./install -agreeToLicense yes &>/home/vcap/logs/MCRinstall.out  &>log.out"
         File.open("log.out", "r") do |f|
           f.each_line do |line|
             puts "ellie"
