@@ -41,7 +41,7 @@ module JavaBuildpack
         #download("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip", @component_name) do |file|
         system 'wget http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip'
         system 'unzip MCR_R2015b_glnxa64_installer.zip'
-        ret=system './install  -mode silent -agreeToLicense yes -destinationFolder .'
+        ret=system './install  -mode silent -agreeToLicense yes -destinationFolder /tmp/app/.java-buildpack/matlab/'
       end
 
 
