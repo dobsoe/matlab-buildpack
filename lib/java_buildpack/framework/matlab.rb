@@ -43,7 +43,8 @@ module JavaBuildpack
         system 'unzip MCR_R2015b_glnxa64_installer.zip'
         system 'rm MCR_R2015b_glnxa64_installer.zip'
         ret=system './install  -mode silent -agreeToLicense yes -destinationFolder /tmp/app/.java-buildpack/matlab/'
-      end
+        system 'export LD_LIBRARY_PATH = /tmp/app/.java-buildpack/matlab/v90/runtime/glnxa64:/tmp/app/.java-buildpack/matlab/v90/bin/glnxa64:/tmp/app/.java-buildpack/matlab/v90/sys/os/glnxa64:$LD_LIBRARY_PATH'
+        end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
