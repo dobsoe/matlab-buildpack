@@ -39,7 +39,7 @@ module JavaBuildpack
         FileUtils.mkdir_p(@droplet.sandbox)
         FileUtils.cd(@droplet.sandbox)
         FileUtils.mkdir_p '/usr/local/'
-        FileUtils.chmod 777, '/usr/local/' :verbose=>true
+        FileUtils.chmod 777, '/usr/local/', :verbose=>true
         puts Dir.entries(".")
         #download("", "http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip", @component_name) do |file|
         system 'wget http://uk.mathworks.com/supportfiles/downloads/R2015b/deployment_files/R2015b/installers/glnxa64/MCR_R2015b_glnxa64_installer.zip'
